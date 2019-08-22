@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "alvin",
+      "email": "alvin@gm.com",
+      "password": "satuduatiga"
+    },
+    {
+      "username": "admin",
+      "email": "admin@fahrezialwi.com",
+      "password": "123456",
+      "id": 2
+    }
+  ]
+}
