@@ -11,6 +11,56 @@
       "email": "admin@fahrezialwi.com",
       "password": "123456",
       "id": 2
+    },
+    {
+      "username": "moderator",
+      "email": "mod@gmail.com",
+      "password": "123456",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "name": "Fantech Gaming Mouse Wireless 2000 DPI - W4 - Black",
+      "description": "Dengan harganya yang begitu terjangkau, Anda bukan hanya mendapatkan mouse yang dikhususkan untuk gaming saja, namun juga fitur menarik seperti wireless dan dpi yang cukup tinggi.",
+      "price": "29.600",
+      "picture": "https://www.jakartanotebook.com/images/products/40/63/22490/2/fantech-gaming-mouse-wireless-2000-dpi-black-94.jpg",
+      "id": 1
+    },
+    {
+      "name": "Gaming Mouse Pad XL Desk Mat 30 x 80cm - Model B1",
+      "description": "Gaming Mouse Pad ini dibuat dari material kain yang berkualitas dan pada setiap sudut mouse pad terdapat jahitan tambahan sehingga ketahaan mouse pad ini sangat tangguh. Memiliki anti slip back yang berfungsi agar mousepad tidak mudah bergerak saat Anda menggunakan mouse. Gambar Model Overwatch.",
+      "price": "39.500",
+      "picture": "https://www.jakartanotebook.com/images/products/30/63/24632/1/gaming-mouse-pad-30-x-80cm-model-b1-2.jpg",
+      "id": 2
+    },
+    {
+      "name": "3.5mm Microphone with Clip for Smartphone / Laptop / Tablet PC - SR-503 - Black",
+      "description": "Microphone untuk berbagai jenis perangkat yang menggunakan 3.5mm port seperti smartphone, pc, laptop, dll. Dengan ini Anda dapat merekam suara yang lebih baik dibanding mic internal pada laptop dan smartphone.",
+      "price": "6.300",
+      "picture": "https://www.jakartanotebook.com/images/products/63/63/15363/2/3.5mm-microphone-with-clip-for-smartphone-or-laptop-or-tablet-pc-black-109.JPG",
+      "id": 3
+    },
+    {
+      "name": "Knowledge Zenith Bass Monitoring Earphones - KZ-ED12 - Black",
+      "description": "Knowledge Zenith ED12 dapat menghasilkan suara bass yang sangat deep dan nonjok namun tetap menjaga kualitas high dan mid yang maju. Body earphone terbuat seperti costum earphone sehingga sangat nyaman digunakan.",
+      "price": "122.900",
+      "picture": "https://www.jakartanotebook.com/images/products/42/442/22983/2/knowledge-zenith-bass-monitoring-earphones-kz-ed12-black-1.jpg",
+      "id": 4
+    },
+    {
+      "name": "EASYIDEA Portable USB Hub 4 Port - HB3004 - Black",
+      "description": "USB Hub dengan 4 buah USB 2.0. dengan USB Hub ini Anda dapat mencolok berbagai perangkat seperti keyboard, mouse, flashdisk dan perangkat gadget lainnya yang menggunakan port USB.",
+      "price": "17.500",
+      "picture": "https://www.jakartanotebook.com/images/products/38/63/12249/2/mini-portable-otg-usb-hub-4-port-black-2.jpg",
+      "id": 5
+    },
+    {
+      "name": "Boss BOPAI Tas Ransel Laptop Profesional - 5971830 - Black",
+      "description": "Tas ransel laptop ini terbuat dari material nylon berkualitas. Dilengkapi dengan banyak komparmen untuk menaruh barang-barang bawaan Anda. Tas ini juga memiliki tempat khusus untuk menaruh laptop berukuran maksimal 15 inch.",
+      "price": "176.800",
+      "picture": "https://www.jakartanotebook.com/images/products/19/63/26594/2/tas-ransel-laptop-profesional-black-11.jpg",
+      "id": 6
     }
   ]
 }

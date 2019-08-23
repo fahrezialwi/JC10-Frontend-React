@@ -19,15 +19,15 @@ class SearchBar extends Component {
     render() {
         return (
             <div>
-                <h3 className="text-center mt-3">Search Image</h3>
+                <h3 className="text-center mt-3">Unsplash Image Search</h3>
                 <form 
-                    className="form-group mt-5" 
+                    className="form-group mt-3" 
                     onSubmit={this.onSubmitForm}> 
                     <input 
                         type="text" 
                         onChange = {this.onChangeText}
                         className="form-control" 
-                        placeholder="Type Something"/>
+                        placeholder="What do you want to search?"/>
                 </form>
             </div>
         )
