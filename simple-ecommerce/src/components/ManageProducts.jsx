@@ -5,7 +5,11 @@ class ManageProducts extends Component {
 
     state = {
         products: [],
-        selectedId: 0
+        selectedId: 0,
+        selectedName: '',
+        selectedDescription: '',
+        selectedPrice: '',
+        selectedPicture: ''
     }
 
     // KETIGA
@@ -59,8 +63,45 @@ class ManageProducts extends Component {
     }
 
     // Edit data
-    onEditClick = (id) => {
-        this.setState({selectedId: id})
+    onEditClick = (id, product) => {
+        this.setState({
+            selectedId: id,
+            selectedName: product.name,
+            selectedDescription: product.description,
+            selectedPrice: product.price,
+            selectedPicture: product.picture
+        })
+    }
+    
+    // Save edit data
+    onSaveClick = () => {
+        // Ambil data dari text input
+        let id = this.state.selectedId
+        let name = this.state.selectedName
+        let description = this.state.selectedDescription
+        let price = this.state.selectedPrice
+        let picture = this.state.selectedPicture
+
+        // Patch data di database (JSON)
+        axios.patch(
+            `http://localhost:2019/products/${id}`, 
+            {
+                name: name,
+                description: description,
+                price: price,
+                picture: picture
+            }
+        ).then((res) => {
+            this.getData()
+            this.setState({selectedId: 0})
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    // Cancel edit data
+    onCancelClick = () => {
+        this.setState({selectedId: 0})
     }
 
     // Render Product List
@@ -90,9 +131,9 @@ class ManageProducts extends Component {
                         </td>
                         <td>
                             <button 
-                                className='btn btn-warning'
+                                className="btn btn-warning"
                                 // anonymous function
-                                onClick={() => {this.onEditClick(product.id)}}
+                                onClick={() => {this.onEditClick(product.id, product)}}
                                 >
                                 Edit
                             </button>
@@ -103,12 +144,50 @@ class ManageProducts extends Component {
                 // render sebagai textbox
                 return (
                     <tr key={product.id}>
-                        <td><input type="text" className="form-control mt-4 mb-4"/></td>
-                        <td><input type="text" className="form-control mt-4 mb-4"/></td>
-                        <td><input type="text" className="form-control mt-4 mb-4"/></td>
-                        <td><input type="text" className="form-control mt-4 mb-4"/></td>
                         <td>
-                            <button className='btn btn-danger mt-4 mb-4'>
+                            <input 
+                                type="text" 
+                                className="form-control mt-4 mb-4" 
+                                value={this.state.selectedName} 
+                                onChange = {(e) => this.setState({selectedName: e.target.value})}
+                            />
+                        </td>
+                        <td>
+                            <input 
+                                type="text" 
+                                className="form-control mt-4 mb-4"
+                                value={this.state.selectedDescription} 
+                                onChange = {(e) => this.setState({selectedDescription: e.target.value})}
+                            />
+                            </td>
+                        <td>
+                            <input 
+                                type="text" 
+                                className="form-control mt-4 mb-4" 
+                                value={this.state.selectedPrice} 
+                                onChange = {(e) => this.setState({selectedPrice: e.target.value})}
+                            />
+                        </td>
+                        <td>
+                            <input 
+                                type="text" 
+                                className="form-control mt-4 mb-4" 
+                                value={this.state.selectedPicture}
+                                onChange = {(e) => this.setState({selectedPicture: e.target.value})}
+                            />
+                        </td>
+                        <td>
+                            <button
+                                className='btn btn-success' 
+                                onClick = {this.onSaveClick}
+                            >
+                                Save
+                            </button>
+                      
+                            <button 
+                                className='btn btn-danger' 
+                                onClick = {this.onCancelClick}
+                            >
                                 Cancel
                             </button>
                         </td>

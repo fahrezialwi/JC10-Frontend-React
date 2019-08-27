@@ -12,7 +12,7 @@ class Login extends Component {
                         </div>
                     
                         <form>
-                            <div className="input-group"><input type="email" className="form-control mt-3" placeholder="Email"/></div>
+                            <div className="input-group"><input type="text" className="form-control mt-3" placeholder="Username"/></div>
                             <div className="input-group"><input type="password" className="form-control mt-3" placeholder="Password"/></div>
                         </form>
 
