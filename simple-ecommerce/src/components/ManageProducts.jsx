@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 
 class ManageProducts extends Component {
 
@@ -29,7 +29,12 @@ class ManageProducts extends Component {
         ).then((res) => {
             // Ditaruh di state.data
             console.log("mulai setState() (async)")
-            this.setState({products: res.data})
+            this.setState(
+                {
+                    products: res.data, 
+                    selectedId: 0
+                }
+            )
             console.log("selesai setState() (async)")
 
         }).catch((err)=>{
@@ -93,7 +98,6 @@ class ManageProducts extends Component {
             }
         ).then((res) => {
             this.getData()
-            this.setState({selectedId: 0})
         }).catch((err) => {
             console.log(err)
         })
