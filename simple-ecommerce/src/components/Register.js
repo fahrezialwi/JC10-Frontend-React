@@ -26,14 +26,11 @@ class Register extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container login-top">
                 <div className="row">
-                    <div className="col-sm-8 col-md-4 mx-auto mt-5 card">
+                    <div className="col-sm-8 col-md-4 mx-auto">
                         <div className="card-body">
-                            <div className="card-title">
-                                <h1>Register</h1>
-                            </div>
-                        
+                            <h2>Register</h2>
                             <form>
                                 <div className="input-group"><input ref={(input)=>{this.username = input}} type="text" className="form-control mt-3" placeholder="Username"/></div>
                                 <div className="input-group"><input ref={(input)=>{this.email = input}} type="email" className="form-control mt-3" placeholder="Email"/></div>
@@ -41,7 +38,7 @@ class Register extends Component {
                             </form>
 
                             <div className="text-center">
-                                <button className="btn btn-block btn-primary mt-4" onClick={this.onRegisterClick}>Register</button>
+                                <button className="btn btn-block btn-success mt-4" onClick={this.onRegisterClick}>Register</button>
                             </div>
                         </div>
                     </div>

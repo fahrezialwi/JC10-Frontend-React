@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {
-    Button,
+
     Collapse,
     Navbar,
     NavbarToggler,
@@ -14,7 +14,8 @@ import {
 } from 'reactstrap'
 import { connect } from 'react-redux'
 
-// Function untuk mengambil data di redux state
+
+// Function untuk mengambil data di redux state dan menjadikannya props
 const mapStateToProps = (state) => {
   return {
     username: state.auth.username
@@ -24,34 +25,35 @@ const mapStateToProps = (state) => {
 class Header extends Component {
 
     constructor(props) {
-        super(props)
-        this.toggle = this.toggle.bind(this)
-        this.state = {
-          isOpen: false
-        }
+      super(props)
+      // this.toggle = this.toggle.bind(this)
+      this.state = {
+        isOpen: false
       }
-      toggle() {
-        this.setState({
-          isOpen: !this.state.isOpen
-        })
-      }
+    }
+
+    toggle = () => {
+      this.setState({
+        isOpen: !this.state.isOpen
+      })
+    }
 
     render() {
       if(!this.props.username){
         return (
           <div>
-            <Navbar color="dark" dark expand="md">
+            <Navbar color="light" light expand="md" fixed="top">
               <div className="container">
-                <Link className="navbar-brand" to="/">Simple E-Commerce</Link>
+                <Link className="navbar-brand" to="/">tukupedia</Link>
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
-                      <NavLink className="nav-link" to="/register">Register</NavLink>
+                      <NavLink className="nav-link mr-3 text-light-dark" to="/register">Register</NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink to='/login'>
-                            <Button className='mx-3' color="primary">Login</Button>
+                          <button className="btn btn-outline-success">Login</button>
                         </NavLink>
                     </NavItem>
                   </Nav>

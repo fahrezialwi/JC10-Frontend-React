@@ -3,13 +3,16 @@ import axios from 'axios'
 
 class ManageProducts extends Component {
 
-    state = {
-        products: [],
-        selectedId: 0,
-        selectedName: '',
-        selectedDescription: '',
-        selectedPrice: '',
-        selectedPicture: ''
+    constructor(props) {
+        super(props)
+        this.state = {
+            products: [],
+            selectedId: 0,
+            selectedName: '',
+            selectedDescription: '',
+            selectedPrice: '',
+            selectedPicture: ''
+        }
     }
 
     // KETIGA
@@ -207,7 +210,7 @@ class ManageProducts extends Component {
     render() {
         console.log("mulai render()")
         return (
-            <div className="container">
+            <div className="container container-top">
             <h1 className="text-center mt-4 mb-4">Product List</h1>
                 <table className="table text-center">
                     <thead>
