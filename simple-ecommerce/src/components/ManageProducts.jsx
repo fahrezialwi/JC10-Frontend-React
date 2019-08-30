@@ -77,6 +77,8 @@ class ManageProducts extends Component {
             selectedName: product.name,
             selectedDescription: product.description,
             selectedPrice: product.price,
+            selectedSeller: product.seller,
+            selectedRating: product.rating,
             selectedPicture: product.picture
         })
     }
@@ -88,6 +90,8 @@ class ManageProducts extends Component {
         let name = this.state.selectedName
         let description = this.state.selectedDescription
         let price = this.state.selectedPrice
+        let seller = this.state.selectedSeller
+        let rating = this.state.selectedRating
         let picture = this.state.selectedPicture
 
         // Patch data di database (JSON)
@@ -97,6 +101,8 @@ class ManageProducts extends Component {
                 name: name,
                 description: description,
                 price: price,
+                seller: seller,
+                rating: rating,
                 picture: picture
             }
         ).then((res) => {
@@ -129,6 +135,8 @@ class ManageProducts extends Component {
                         <td>{product.name}</td>
                         <td>{product.description}</td>
                         <td>{product.price}</td>
+                        <td>{product.seller}</td>
+                        <td>{product.rating}</td>
                         <td>
                             <img 
                                 src={product.picture} 
@@ -138,7 +146,7 @@ class ManageProducts extends Component {
                         </td>
                         <td>
                             <button 
-                                className="btn btn-warning"
+                                className="btn btn-success"
                                 // anonymous function
                                 onClick={() => {this.onEditClick(product.id, product)}}
                                 >
@@ -179,20 +187,36 @@ class ManageProducts extends Component {
                             <input 
                                 type="text" 
                                 className="form-control mt-4 mb-4" 
+                                value={this.state.selectedSeller} 
+                                onChange = {(e) => this.setState({selectedSeller: e.target.value})}
+                            />
+                        </td>
+                        <td>
+                            <input 
+                                type="text" 
+                                className="form-control mt-4 mb-4" 
+                                value={this.state.selectedRating} 
+                                onChange = {(e) => this.setState({selectedRating: e.target.value})}
+                            />
+                        </td>
+                        <td>
+                            <input 
+                                type="text" 
+                                className="form-control mt-4 mb-4" 
                                 value={this.state.selectedPicture}
                                 onChange = {(e) => this.setState({selectedPicture: e.target.value})}
                             />
                         </td>
                         <td>
                             <button
-                                className='btn btn-success' 
+                                className='btn btn-success btn-block mb-1' 
                                 onClick = {this.onSaveClick}
                             >
                                 Save
                             </button>
                       
                             <button 
-                                className='btn btn-danger' 
+                                className='btn btn-outline-success btn-block' 
                                 onClick = {this.onCancelClick}
                             >
                                 Cancel
@@ -218,6 +242,8 @@ class ManageProducts extends Component {
                             <th>NAME</th>
                             <th>DESCRIPTION</th>
                             <th>PRICE</th>
+                            <th>SELLER</th>
+                            <th>RATING</th>
                             <th>PICTURE</th>
                             <th>ACTION</th>
                         </tr>
@@ -234,6 +260,8 @@ class ManageProducts extends Component {
                             <th>NAME</th>
                             <th>DESCRIPTION</th>
                             <th>PRICE</th>
+                            <th>SELLER</th>
+                            <th>RATING</th>
                             <th>PICTURE</th>
                             <th>ACTION</th>
                         </tr>
@@ -243,6 +271,8 @@ class ManageProducts extends Component {
                             <td><input ref={(input) => {this.name = input}} className="form-control" type="text"/></td>
                             <td><input ref={(input) => {this.desc = input}} className="form-control" type="text"/></td>
                             <td><input ref={(input) => {this.price = input}} className="form-control" type="text"/></td>
+                            <td><input ref={(input) => {this.seller = input}} className="form-control" type="text"/></td>
+                            <td><input ref={(input) => {this.rating = input}} className="form-control" type="text"/></td>
                             <td><input ref={(input) => {this.pict = input}} className="form-control" type="text"/></td>
                             <td><button className="btn btn-success btn-block" onClick={this.onAddProduct}>Add</button></td>
                         </tr>

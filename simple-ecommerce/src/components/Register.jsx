@@ -36,7 +36,6 @@ class Register extends Component {
                                 <div className="input-group"><input ref={(input)=>{this.email = input}} type="email" className="form-control mt-3" placeholder="Email"/></div>
                                 <div className="input-group"><input ref={(input)=>{this.password = input}} type="password" className="form-control mt-3" placeholder="Password"/></div>
                             </form>
-
                             <div className="text-center">
                                 <button className="btn btn-block btn-success mt-4" onClick={this.onRegisterClick}>Register</button>
                             </div>

@@ -45,12 +45,18 @@ class Login extends Component {
             if (res.data.length === 0){
                 console.log('User tidak ditemukan')
             } else {
-                this.props.onLoginUser(
-                    res.data[0].id,
-                    res.data[0].username
+                let{id, username} = res.data[0]
+
+                // 1. Mengirim data ke redux
+                this.props.onLoginUser(id,username)
+
+                // 2. Mengirim data ke local storage
+                localStorage.setItem(
+                    'userData',
+                    JSON.stringify({id, username})
+                    // JSON.stringify akan mengubah bentuk object menjadi string 
                 )
             }
-
         })
     }
 
@@ -82,3 +88,4 @@ class Login extends Component {
 }
 
 export default connect(mapStateToProps,{onLoginUser})(Login)
+

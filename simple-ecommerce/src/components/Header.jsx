@@ -65,9 +65,9 @@ class Header extends Component {
       } else {
         return (
           <div>
-            <Navbar color="dark" dark expand="md">
+            <Navbar color="light" light expand="md" fixed="top">
               <div className="container">
-                <Link className="navbar-brand" to="/">Simple E-Commerce</Link>
+                <Link className="navbar-brand" to="/">tukupedia</Link>
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
@@ -75,15 +75,15 @@ class Header extends Component {
                       <NavLink className="nav-link" to="/manageproducts">Manage Products</NavLink>
                     </NavItem>
                     <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
+                    <DropdownToggle nav caret className="navbar-dropdown">
                       Hello, {this.props.username}
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>
+                      <DropdownItem className="text-light-dark">
                         Profile
                       </DropdownItem>
                       <DropdownItem divider />
-                      <DropdownItem>
+                      <DropdownItem className="text-light-dark">
                         Logout
                       </DropdownItem>
                     </DropdownMenu>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ProductItem from './ProductItem'
 
 class Home extends Component {
 
@@ -7,7 +8,7 @@ class Home extends Component {
         super(props)
         this.state = {
             products: [],
-            searchProducts: []  
+            processedProducts: []
         }
     }
     
@@ -17,7 +18,7 @@ class Home extends Component {
         ).then((res) => {
             this.setState({
                 products: res.data,
-                searchProducts: res.data
+                processedProducts: res.data
             })
         })
     }
@@ -39,8 +40,7 @@ class Home extends Component {
         let hasilFilter = this.state.products.filter((product) => {
                 return (product.name.toLowerCase().includes(name.toLowerCase()) && min <= product.price && max >= product.price)   
         })
-
-        this.setState({searchProducts: hasilFilter})
+        this.setState({processedProducts: hasilFilter})
     }
 
     // Reset
@@ -48,30 +48,52 @@ class Home extends Component {
         // prevState = state saat ini
         this.setState((prevState) => {
             return {
-                searchProducts: prevState.products
+                processedProducts: prevState.products
             }
         })
+    }
+
+    // Sort
+    onSelectChange = (e) => {
+        let hasilSort
+        if (e.target.value === "name"){
+            hasilSort = this.state.processedProducts.sort((a, b) => {
+                if(a.name > b.name){
+                    return 1
+                } else if(a.name < b.name){
+                    return -1
+                } else {
+                    return 0
+                }
+            })
+        } else if (e.target.value === "lowest"){
+            hasilSort = this.state.processedProducts.sort((a, b) => {
+                return a.price - b.price
+            })
+        } else if (e.target.value === "highest"){
+            hasilSort = this.state.processedProducts.sort((a, b) => {
+                return b.price - a.price
+            })
+        } else if (e.target.value === "rating"){
+            hasilSort = this.state.processedProducts.sort((a, b) => {
+                return b.rating - a.rating
+            })
+        } else if (e.target.value === "relevance"){
+            hasilSort = this.state.processedProducts.sort((a, b) => {
+                return a.id - b.id
+            })
+        }
+        this.setState({processedProducts: hasilSort})
     }
 
     productList = () => {
         // products = [{}, {}, {}]
         // product = {id, name, description, price, picture}
-        return this.state.searchProducts.map((product) => {
-            return (
-                <div className="col-lg-3 col-md-6 col-sm-12" key={product.id}>
-                    <div className="card p-3 mb-3">
-                    <img src={product.picture} alt={product.name} className="card-img-top"/>
-                        <h6 className="card-title word-break">{product.name}</h6>
-                        <p className="card-text">Rp. {product.price}</p>
-                        <input className="form-control mb-2" type="number" placeholder="Qty"/>
-                        <div>
-                            <button className="btn btn-outline-success btn-block">Detail</button>
-                            <button className="btn btn-success btn-block">Add To Cart</button>
-                        </div>
-                        </div>
-                </div>
-            )
+        return this.state.processedProducts.map((product) => {
+            return <ProductItem product={product} key={product.id}/>
         })
+        
+
     }
     
     render() {
@@ -96,16 +118,24 @@ class Home extends Component {
                     </div>
                     
                     <div className="col-lg-9 col-md-8 col-sm-12">
-                        <div className="row">
+                        <div className="text-right mb-3">
+                            Sort by
+                            <select className="ml-3" onChange = {this.onSelectChange}>
+                                <option value="relevance">Relevance</option>
+                                <option value="name">Name</option>
+                                <option value="lowest">Lowest Price</option>
+                                <option value="highest">Highest Price</option>
+                                <option value="rating">Rating</option>
+                            </select>
+                        </div>
+                        <div className="row row-list">
                             {this.productList()}
                         </div>
                     </div>
-                    
-                   
-                    
                 </div>
             </div>
         )
+        
     }
 }
 
