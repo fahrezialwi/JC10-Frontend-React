@@ -39,7 +39,9 @@ a:hover {
 .navbar-brand {
     color: #28a745!important;
     font-weight: bold;
-    font-size: 25px!important
+    font-size: 25px!important;
+    padding-top: 0px;
+    padding-bottom: 0px
 }
 
 .navbar-dropdown {
@@ -54,6 +56,32 @@ a:hover {
     color: #fff;
     text-decoration: none;
     background-color: #dcdcdc
+}
+
+.input-search {
+    width: 53%;
+    margin-left: 20px;
+    margin-right: 20px
+}
+
+@media (min-width: 1200px){
+    .input-search {
+        width: 60%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+    .input-search {
+        width: 40%;
+        margin-left: 0px;
+        margin-right: 0px
+    }
+}
+
+@media (max-width: 767px){
+    .input-search {
+        display: none;
+    }
 }
 
 /* Home styling */

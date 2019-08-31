@@ -38,6 +38,11 @@ class Header extends Component {
       })
     }
 
+    onSubmitSearch = (e) => {
+      e.preventDefault()
+      alert("Fitur belum tersedia")
+    }
+
     render() {
       if(!this.props.username){
         return (
@@ -45,6 +50,12 @@ class Header extends Component {
             <Navbar color="light" light expand="md" fixed="top">
               <div className="container">
                 <Link className="navbar-brand" to="/">tukupedia</Link>
+                <div className="input-group input-search">
+                    <input type="text" className="form-control" placeholder="Search product" id="search-input"/>
+                    <div className="input-group-append">
+                      <button className="btn btn-success" type="button" id="search-button">Search</button>
+                    </div>
+                </div>
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
@@ -68,6 +79,12 @@ class Header extends Component {
             <Navbar color="light" light expand="md" fixed="top">
               <div className="container">
                 <Link className="navbar-brand" to="/">tukupedia</Link>
+                <form className="input-group input-search" onSubmit={this.onSubmitSearch}>
+                    <input type="text" className="form-control" placeholder="Search product" id="search-input"/>
+                    <div className="input-group-append">
+                      <button className="btn btn-success" type="button" id="search-button" onClick={this.onSubmitSearch}>Search</button>
+                    </div>
+                </form>
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>

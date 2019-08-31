@@ -48,7 +48,7 @@ class App extends Component {
         if(this.state.check){
             return (
                 <BrowserRouter>
-                    <Header/>
+                    <Header fun={this.onSearchSubmit}/>
                     <Route path='/' exact component={Home}/>
                     <Route path='/register' component={Register} />
                     <Route path='/login' component={Login} />

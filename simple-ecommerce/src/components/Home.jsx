@@ -24,7 +24,10 @@ class Home extends Component {
     }
 
     // Filter
-    onFilterClick = () => {
+    onFilterSubmit = (e) => {
+        e.preventDefault()
+        this.setState({processedProducts: this.setState.products})
+
         let name = this.name.value
         let min = parseInt(this.minimum.value)
         let max = parseInt(this.maximum.value)
@@ -41,16 +44,6 @@ class Home extends Component {
                 return (product.name.toLowerCase().includes(name.toLowerCase()) && min <= product.price && max >= product.price)   
         })
         this.setState({processedProducts: hasilFilter})
-    }
-
-    // Reset
-    onResetClick = () => {
-        // prevState = state saat ini
-        this.setState((prevState) => {
-            return {
-                processedProducts: prevState.products
-            }
-        })
     }
 
     // Sort
@@ -88,12 +81,10 @@ class Home extends Component {
 
     productList = () => {
         // products = [{}, {}, {}]
-        // product = {id, name, description, price, picture}
+        // product = {id, name, description, price, seller, rating, picture}
         return this.state.processedProducts.map((product) => {
             return <ProductItem product={product} key={product.id}/>
         })
-        
-
     }
     
     render() {
@@ -105,15 +96,13 @@ class Home extends Component {
                             <div className="border-bottom card-title mb-3">
                                 <h5>Filter Product</h5>
                             </div>
-                            <form className="form-group">
+                            <form onBlur={this.onFilterSubmit}>
                                 <h6>Name</h6>
                                 <input ref={(input) => {this.name = input}} className="form-control mb-3" type="text"/>
                                 <h6>Price</h6>
                                 <input ref={(input) => {this.minimum = input}} className="form-control mb-2" type="number" placeholder="Minimum"/>
                                 <input ref={(input) => {this.maximum = input}} className="form-control mb-2" type="number" placeholder="Maximum"/>
                             </form>
-                            <button className="btn btn-success btn-block" onClick={this.onFilterClick}>Filter</button>
-                            <button className="btn btn-outline-success btn-block" onClick={this.onResetClick}>Reset</button>
                         </div>
                     </div>
                     

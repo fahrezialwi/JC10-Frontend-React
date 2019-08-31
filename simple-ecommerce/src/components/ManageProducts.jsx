@@ -82,6 +82,20 @@ class ManageProducts extends Component {
             selectedPicture: product.picture
         })
     }
+
+    // Delete data   
+    onDeleteClick = (id) => {
+
+        // Delete data di database (JSON)
+        axios.delete(
+            `http://localhost:2019/products/${id}`
+
+        ).then((res) => {
+            this.getData()
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
     
     // Save edit data
     onSaveClick = () => {
@@ -146,11 +160,18 @@ class ManageProducts extends Component {
                         </td>
                         <td>
                             <button 
-                                className="btn btn-success"
+                                className="btn btn-success btn-block mb-1"
                                 // anonymous function
                                 onClick={() => {this.onEditClick(product.id, product)}}
                                 >
                                 Edit
+                            </button>
+                            <button 
+                                className="btn btn-outline-success btn-block"
+                                // anonymous function
+                                onClick={() => {this.onDeleteClick(product.id)}}
+                                >
+                                Delete
                             </button>
                         </td>
                     </tr>
