@@ -1,5 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
+// Function yang akan mengambil data dari redux state dan menjadikannya props
+const mapStateToProps = (state) => {
+    return {
+        username: state.auth.username
+    }
+}
 
 class ManageProducts extends Component {
 
@@ -253,59 +262,63 @@ class ManageProducts extends Component {
 
     // KEDUA, KEEMPAT
     render() {
-        console.log("mulai render()")
-        return (
-            <div className="container container-top">
-            <h1 className="text-center mt-4 mb-4">Product List</h1>
-                <table className="table text-center">
-                    <thead>
-                        <tr>
-                            <th>NAME</th>
-                            <th>DESCRIPTION</th>
-                            <th>PRICE</th>
-                            <th>SELLER</th>
-                            <th>RATING</th>
-                            <th>PICTURE</th>
-                            <th>ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.productList()}
-                    </tbody>
-                </table>
+        if(this.props.username){
+            console.log("mulai render()")
+            return (
+                <div className="container container-top">
+                <h1 className="text-center mt-4 mb-4">Product List</h1>
+                    <table className="table text-center">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>DESCRIPTION</th>
+                                <th>PRICE</th>
+                                <th>SELLER</th>
+                                <th>RATING</th>
+                                <th>PICTURE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.productList()}
+                        </tbody>
+                    </table>
 
-                <h1 className="text-center mt-4 mb-4">Add Product</h1>
-                <table className="table text-center">
-                    <thead>
-                        <tr>
-                            <th>NAME</th>
-                            <th>DESCRIPTION</th>
-                            <th>PRICE</th>
-                            <th>SELLER</th>
-                            <th>RATING</th>
-                            <th>PICTURE</th>
-                            <th>ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input ref={(input) => {this.name = input}} className="form-control" type="text"/></td>
-                            <td><input ref={(input) => {this.desc = input}} className="form-control" type="text"/></td>
-                            <td><input ref={(input) => {this.price = input}} className="form-control" type="text"/></td>
-                            <td><input ref={(input) => {this.seller = input}} className="form-control" type="text"/></td>
-                            <td><input ref={(input) => {this.rating = input}} className="form-control" type="text"/></td>
-                            <td><input ref={(input) => {this.pict = input}} className="form-control" type="text"/></td>
-                            <td><button className="btn btn-success btn-block" onClick={this.onAddProduct}>Add</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-                {console.log("selesai render()")}
-            </div>
-        )
+                    <h1 className="text-center mt-4 mb-4">Add Product</h1>
+                    <table className="table text-center">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>DESCRIPTION</th>
+                                <th>PRICE</th>
+                                <th>SELLER</th>
+                                <th>RATING</th>
+                                <th>PICTURE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input ref={(input) => {this.name = input}} className="form-control" type="text"/></td>
+                                <td><input ref={(input) => {this.desc = input}} className="form-control" type="text"/></td>
+                                <td><input ref={(input) => {this.price = input}} className="form-control" type="text"/></td>
+                                <td><input ref={(input) => {this.seller = input}} className="form-control" type="text"/></td>
+                                <td><input ref={(input) => {this.rating = input}} className="form-control" type="text"/></td>
+                                <td><input ref={(input) => {this.pict = input}} className="form-control" type="text"/></td>
+                                <td><button className="btn btn-success btn-block" onClick={this.onAddProduct}>Add</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {console.log("selesai render()")}
+                </div>
+            )
+        } else {
+            return <Redirect to='/login'/>
+        }
     }
 }
 
-export default ManageProducts
+export default connect(mapStateToProps)(ManageProducts)
 
 // React lifecycle
 // 1. componentWillMount()

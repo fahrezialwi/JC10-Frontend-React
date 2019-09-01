@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import axios from 'axios'
+import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 // Action Creator
@@ -45,6 +45,7 @@ class Login extends Component {
             if (res.data.length === 0){
                 console.log('User tidak ditemukan')
             } else {
+                // mengambil properti id dan username dari object res.data[0]
                 let{id, username} = res.data[0]
 
                 // 1. Mengirim data ke redux

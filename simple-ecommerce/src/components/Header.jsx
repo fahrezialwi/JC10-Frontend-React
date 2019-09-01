@@ -14,9 +14,18 @@ import {
 } from 'reactstrap'
 import { connect } from 'react-redux'
 
+// Action Creator
+const onLogoutUser = () => {
+    
+  // Action
+  return {
+      type: 'LOGOUT_SUCCESS'
+  }
+}
 
 // Function untuk mengambil data di redux state dan menjadikannya props
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     username: state.auth.username
   }
@@ -38,9 +47,16 @@ class Header extends Component {
       })
     }
 
-    onSubmitSearch = (e) => {
+    onSearchSubmit = (e) => {
       e.preventDefault()
       alert("Fitur belum tersedia")
+    }
+
+    onLogoutClick = () => {
+      this.props.onLogoutUser()
+      localStorage.removeItem(
+        'userData'
+      )
     }
 
     render() {
@@ -50,12 +66,12 @@ class Header extends Component {
             <Navbar color="light" light expand="md" fixed="top">
               <div className="container">
                 <Link className="navbar-brand" to="/">tukupedia</Link>
-                <div className="input-group input-search">
+                <form className="input-group input-search" onSubmit={this.onSearchSubmit}>
                     <input type="text" className="form-control" placeholder="Search product" id="search-input"/>
                     <div className="input-group-append">
-                      <button className="btn btn-success" type="button" id="search-button">Search</button>
+                      <button className="btn btn-success" type="button" id="search-button" onClick={this.onSearchSubmit}>Search</button>
                     </div>
-                </div>
+                </form>
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
@@ -79,10 +95,10 @@ class Header extends Component {
             <Navbar color="light" light expand="md" fixed="top">
               <div className="container">
                 <Link className="navbar-brand" to="/">tukupedia</Link>
-                <form className="input-group input-search" onSubmit={this.onSubmitSearch}>
+                <form className="input-group input-search" onSubmit={this.onSearchSubmit}>
                     <input type="text" className="form-control" placeholder="Search product" id="search-input"/>
                     <div className="input-group-append">
-                      <button className="btn btn-success" type="button" id="search-button" onClick={this.onSubmitSearch}>Search</button>
+                      <button className="btn btn-success" type="button" id="search-button" onClick={this.onSearchSubmit}>Search</button>
                     </div>
                 </form>
                 <NavbarToggler onClick={this.toggle}/>
@@ -100,7 +116,7 @@ class Header extends Component {
                         Profile
                       </DropdownItem>
                       <DropdownItem divider />
-                      <DropdownItem className="text-light-dark">
+                      <DropdownItem className="text-light-dark" onClick={this.onLogoutClick}>
                         Logout
                       </DropdownItem>
                     </DropdownMenu>
@@ -115,4 +131,4 @@ class Header extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps,{onLogoutUser})(Header)
