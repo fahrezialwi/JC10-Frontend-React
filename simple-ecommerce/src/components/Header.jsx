@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { withRouter, Link, NavLink } from 'react-router-dom'
 import {
 
     Collapse,
@@ -13,23 +13,7 @@ import {
     DropdownItem 
 } from 'reactstrap'
 import { connect } from 'react-redux'
-
-// Action Creator
-const onLogoutUser = () => {
-    
-  // Action
-  return {
-      type: 'LOGOUT_SUCCESS'
-  }
-}
-
-// Function untuk mengambil data di redux state dan menjadikannya props
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    username: state.auth.username
-  }
-}
+import { onLogoutUser, searchKeyword } from '../actions'
 
 class Header extends Component {
 
@@ -49,14 +33,10 @@ class Header extends Component {
 
     onSearchSubmit = (e) => {
       e.preventDefault()
-      alert("Fitur belum tersedia")
-    }
-
-    onLogoutClick = () => {
-      this.props.onLogoutUser()
-      localStorage.removeItem(
-        'userData'
-      )
+      this.props.searchKeyword(this.keyword.value)
+      if (this.keyword.value){
+        this.props.history.push("/searchresults")
+      }
     }
 
     render() {
@@ -66,8 +46,8 @@ class Header extends Component {
             <Navbar color="light" light expand="md" fixed="top">
               <div className="container">
                 <Link className="navbar-brand" to="/">tukupedia</Link>
-                <form className="input-group input-search" onSubmit={this.onSearchSubmit}>
-                    <input type="text" className="form-control" placeholder="Search product" id="search-input"/>
+                 <form className="input-group input-search" onSubmit={this.onSearchSubmit}>
+                    <input ref={(input)=>{this.keyword = input}} type="text" className="form-control" placeholder="Search product" id="search-input"/>
                     <div className="input-group-append">
                       <button className="btn btn-success" type="button" id="search-button" onClick={this.onSearchSubmit}>Search</button>
                     </div>
@@ -96,7 +76,7 @@ class Header extends Component {
               <div className="container">
                 <Link className="navbar-brand" to="/">tukupedia</Link>
                 <form className="input-group input-search" onSubmit={this.onSearchSubmit}>
-                    <input type="text" className="form-control" placeholder="Search product" id="search-input"/>
+                    <input ref={(input)=>{this.keyword = input}} type="text" className="form-control" placeholder="Search product" id="search-input"/>
                     <div className="input-group-append">
                       <button className="btn btn-success" type="button" id="search-button" onClick={this.onSearchSubmit}>Search</button>
                     </div>
@@ -109,14 +89,18 @@ class Header extends Component {
                     </NavItem>
                     <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret className="navbar-dropdown">
-                      Hello, {this.props.username}
+                      <div className="login-break d-inline-block">
+                        {`Hello, ${this.props.username}`}
+                      </div>
                     </DropdownToggle>
                     <DropdownMenu right>
                       <DropdownItem className="text-light-dark">
-                        Profile
+                        <div className="font-weight-bold">{this.props.username}</div>
+                        <div style={{fontSize: "14px"}}>({this.props.email})</div>
                       </DropdownItem>
                       <DropdownItem divider />
-                      <DropdownItem className="text-light-dark" onClick={this.onLogoutClick}>
+                      {/* Setelah dimasukkan ke connect, onLogoutUser dipanggil sebagai this.props.onLogoutUser */}
+                      <DropdownItem className="text-light-dark" onClick={this.props.onLogoutUser}>
                         Logout
                       </DropdownItem>
                     </DropdownMenu>
@@ -131,4 +115,12 @@ class Header extends Component {
     }
 }
 
-export default connect(mapStateToProps,{onLogoutUser})(Header)
+// Function untuk mengambil data di redux state dan menjadikannya props
+const mapStateToProps = (state) => {
+  return {
+    username: state.auth.username,
+    email: state.auth.email
+  }
+}
+
+export default withRouter(connect(mapStateToProps,{onLogoutUser, searchKeyword})(Header))

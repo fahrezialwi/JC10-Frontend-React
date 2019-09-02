@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 class ProductItem extends Component {
     render() {
-
         let {id, name, price, picture, seller, rating} = this.props.product
         return (
             <div className="col-lg-3 col-md-6 col-sm-12 list-padding" key={id}>

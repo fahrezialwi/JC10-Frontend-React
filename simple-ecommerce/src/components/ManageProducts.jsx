@@ -3,13 +3,6 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-// Function yang akan mengambil data dari redux state dan menjadikannya props
-const mapStateToProps = (state) => {
-    return {
-        username: state.auth.username
-    }
-}
-
 class ManageProducts extends Component {
 
     constructor(props) {
@@ -315,6 +308,13 @@ class ManageProducts extends Component {
         } else {
             return <Redirect to='/login'/>
         }
+    }
+}
+
+// Function yang akan mengambil data dari redux state dan menjadikannya props
+const mapStateToProps = (state) => {
+    return {
+        username: state.auth.username
     }
 }
 

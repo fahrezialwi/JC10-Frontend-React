@@ -2,14 +2,29 @@ import { combineReducers } from 'redux'
 
 const init = {
     id: '',
-    username: ''
+    username: '',
+    email: ''
 }
 
-const AuthReducer = (state = init, action) => {
+const initSearch = {
+    keyword: ''
+}
+
+const authReducer = (state = init, action) => {
     switch(action.type) {
         case "LOGIN_SUCCESS":
-            return {...state, id: action.payload.id, username: action.payload.username}
+            return {...state, id: action.payload.id, username: action.payload.username, email: action.payload.email}
+        case "LOGOUT_SUCCESS":
+            return {...state, id: '', username: '', email: ''}
+        default:
+            return state
+    }
+}
 
+const searchReducer = (state = initSearch, action) => {
+    switch(action.type) {
+        case "SEARCH_SUCCESS":
+            return {...state, keyword: action.payload.keyword}
         default:
             return state
     }
@@ -17,7 +32,8 @@ const AuthReducer = (state = init, action) => {
 
 const reducers = combineReducers(
     {
-        auth: AuthReducer
+        auth: authReducer,
+        search: searchReducer 
     }
 )
 

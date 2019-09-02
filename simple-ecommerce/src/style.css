@@ -59,20 +59,20 @@ a:hover {
 }
 
 .input-search {
-    width: 53%;
+    width: 50%;
     margin-left: 20px;
     margin-right: 20px
 }
 
 @media (min-width: 1200px){
     .input-search {
-        width: 60%;
+        width: 58%;
     }
 }
 
 @media (min-width: 768px) and (max-width: 991px){
     .input-search {
-        width: 40%;
+        width: 38%;
         margin-left: 0px;
         margin-right: 0px
     }
@@ -84,7 +84,12 @@ a:hover {
     }
 }
 
-/* Home styling */
+/* Home */
+.carousel-item > img { 
+    width: 100%; 
+}
+
+/* Search results styling */
 @media (min-width: 768px){
     .filter-position {
         position: fixed!important;
