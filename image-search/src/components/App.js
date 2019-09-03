@@ -15,10 +15,8 @@ class App extends Component {
         axios.get(
             'https://api.unsplash.com/search/photos',
             {
-                headers : {
-                    Authorization: `Client-ID 0d447f2b383da5e6c1e4dad0d077879ca1995c05048520c3ecb10e6249e2d091`
-                },
                 params: {
+                    client_id: '0d447f2b383da5e6c1e4dad0d077879ca1995c05048520c3ecb10e6249e2d091',
                     query: keyword
                 }
             }

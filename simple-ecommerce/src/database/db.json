@@ -3,7 +3,7 @@
     {
       "id": 1,
       "username": "alvin",
-      "email": "alvin@gm.com",
+      "email": "alvin@gmail.com",
       "password": "satuduatiga"
     },
     {
@@ -17,6 +17,18 @@
       "email": "mod@gmail.com",
       "password": "123456",
       "id": 3
+    },
+    {
+      "username": "administrator",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "id": 4
+    },
+    {
+      "username": "fahrezialwi",
+      "email": "fahrezialwi@gmail.com",
+      "password": "123456",
+      "id": 5
     }
   ],
   "products": [
@@ -127,6 +139,186 @@
       "rating": "4.2",
       "picture": "https://www.jakartanotebook.com/images/products/70/63/7716/3/ccd-dome-cctv-camera-1-or-4-inch-cmos-720p-6mm-ipw4-04-white-25.jpg",
       "id": 12
+    },
+    {
+      "name": "TaffLED Senter LED Cree XM-L T6 2000 Lumens - E17 - Black",
+      "description": "E17 adalah senter LED yang sangat powerful dan memiliki body yang sangat solid. Dapat menghasilkan cahaya hingga 2000Lm dengan jarak throw 500 meter. Memiliki tactical tail switch untuk On/Off Senter.",
+      "price": "29000",
+      "picture": "https://www.jakartanotebook.com/images/products/35/63/13502/2/taffware-e17-senter-led-cree-xm-l-t6-2000-lumens-black-48.jpg",
+      "id": 13,
+      "seller": "Plug n Play Store",
+      "rating": "4.8"
+    },
+    {
+      "name": "Aputure Halo CRI 95+ LED Flash Ring for Canon Camera - HC100 - Black",
+      "description": "Amaran Halo LED adalah solusi macro lightning sempurna untuk kamera DSLR Anda. Halo berkerja dengan smooth, memberi Anda pencahaan yang steady, terang, dan seragam untuk menghasilkan efek foto yang Anda inginkan. Memiliki 6 opsi pencahayaan: full brightness, left-side, right-side, continuous atau flash. Hal ini akan membantu Anda mengatasi semua masalah pencahayaan Anda.",
+      "price": "532500",
+      "seller": "Choco Camera",
+      "rating": "4.4",
+      "picture": "https://www.jakartanotebook.com/images/products/63/245/13441/2/aputure-halo-cri-95-led-flash-ring-for-canon-camera-hc100-black-1.jpg",
+      "id": 14
+    },
+    {
+      "name": "Remax Body Scales Timbangan Digital - RT-S1 - White",
+      "description": "Timbangan digital dengan layar LCD untuk menampilkan hasil timbangan dan juga memiliki koneksi bluetooth untuk terhubung ke smartphone. Aplikasi pada smartphone berguna untuk memonitor berat tubuh, tulang, lemak dan data kesehatan lainnya.",
+      "price": "265200",
+      "seller": "iREMAX.HK",
+      "rating": "4.5",
+      "picture": "https://www.jakartanotebook.com/images/products/72/432/19857/3/remax-body-scales-timbangan-digital-rt-s1-white-373.jpg",
+      "id": 15
+    },
+    {
+      "name": "AMPrime Tape Audio Mobil Media Player Universal Bluetooth Touch Screen - Black",
+      "description": "Car Dashboard Audio System ini hadir dengan layar touch screen 7\", koneksi bluetooth, pemutar FM, port AUX, USB * TF Card. Percanggih sistem audio mobil Anda dengan mengganti ke sistem audio ini.",
+      "price": "489200",
+      "seller": "Audio Store",
+      "rating": "4.0",
+      "picture": "https://www.jakartanotebook.com/images/products/73/63/22477/2/audio-player-mobil-universal-bluetooth-touch-screen-black-46.jpg",
+      "id": 16
+    },
+    {
+      "name": "JJRC H32WH Quadcopter Drone Wifi dengan Kamera 2MP 720P - White",
+      "description": "JJRC H32WH merupakan drone quadcopter yang dilengkapi dengan berbagai fitur menarik. Penggunaan 4 motor penggerak berkekuatan tinggi membuat drone ini mampu bergerak dengan lincah di udara. Penambahan kamera 2.0MP membuat Anda bisa menggunakan drone ini untuk mengabadikan berbagai momen berharga Anda. Dilengkapi dengan koneksi wifi, Anda bisa menghubungkan smartrphone ke drone ini.",
+      "price": "608900",
+      "seller": "Herman Gadget",
+      "rating": "4.8",
+      "picture": "https://www.jakartanotebook.com/images/products/74/63/24733/3/jjrc-h32wh-quadcopter-drone-dengan-kamera-2mp-720p-white-1.jpg",
+      "id": 17
+    },
+    {
+      "name": "AVATTO Bluetooth Keyboard Dengan Mouse Pad & Touch Numpad - BT10 - Black",
+      "description": "Keyboard ini memiliki mousepad dan touch numpad. Anda dapat mengganti antara fungsi mousepad dan touch numpad dengan mengeser ke kiri dan kanan touchpad yang tersedia. Keyboard ini juga menggunakan koneksi bluetooth untuk terkoneksi ke gadget Anda.",
+      "price": "208100",
+      "seller": "CITICOM",
+      "rating": "4.6",
+      "picture": "https://www.jakartanotebook.com/images/products/41/63/14469/2/bluetooth-keyboard-dengan-mouse-pad-and-touch-numpad-bt10-black-37.JPG",
+      "id": 18
+    },
+    {
+      "name": "Orico Bluetooth 4.0 Receiver Dongle - BTA-403 - Black",
+      "description": "Dengan alat ini Anda dapat membuat komputer atau laptop Anda dapat menerima sinyal bluetooth. Dengan bentuk yang sangat kecil membuat bluetooth dongle mudah dibawa dan saat dicolok tidak mengganggu Anda.",
+      "price": "53300",
+      "seller": "Toko Holic",
+      "rating": "4.3",
+      "picture": "https://www.jakartanotebook.com/images/products/38/338/18093/2/orico-bluetooth-40-receiver-dongle-bta-403-black-1.jpg",
+      "id": 19
+    },
+    {
+      "name": "Cover Sarung Pelindung Motor Size XXL - Black/Red",
+      "description": "Cover Sarung pelindung motor berbahan parasut yang dapat melindungi sepeda motor anda dari panas terik matahari, air hujan, dan debu. Motor Anda tetap bersih karena terlindungi dengan sarung motor ini.",
+      "price": "125900",
+      "seller": "Store Modif",
+      "rating": "4.9",
+      "picture": "https://www.jakartanotebook.com/images/products/73/63/28361/128/cover-sarung-pelindung-motor-size-xxl-black-or-red-1.jpg",
+      "id": 20
+    },
+    {
+      "name": "DOBE Keyboard Gamepad Wireless dengan Touch Pad - TI-501 - Black",
+      "description": "Cover Sarung pelindung motor berbahan parasut yang dapat melindungi sepeda motor anda dari panas terik matahari, air hujan, dan debu. Motor Anda tetap bersih karena terlindungi dengan sarung motor ini.",
+      "price": "238600",
+      "seller": "Grosir Elektronik",
+      "rating": "4.7",
+      "picture": "https://www.jakartanotebook.com/images/products/41/63/23110/2/dobe-keyboard-joystick-wireless-dengan-touch-pad-ti-501-black-1.JPG",
+      "id": 21
+    },
+    {
+      "name": "Touchscreen Panel Replacement for Huawei Ideos S7-101",
+      "description": "Touchscreen Replacement untuk menggantikan panel touchscreen Huawei Ideos S7-101 Anda yang rusak.",
+      "price": "65700",
+      "seller": "TMall Indonesia",
+      "rating": "4.2",
+      "picture": "https://www.jakartanotebook.com/images/products/18/6/9448/1/touchscreen-panel-replacement-for-huawei-ideos-s7-101-1.jpg",
+      "id": 22
+    },
+    {
+      "name": "Xiaomi Yi Action Camera - White",
+      "description": "Xiaomi Yi Action Camera adalah kamera aksi terbaru dari Xiaomi, dengan dimensi kecil yang mampu merekam video 1080P / 60 fps, serta pemotretan resolusi 16 megapiksel menggunakan sensor buatan Sony, Exmor R CMOS.",
+      "price": "799000",
+      "seller": "Xiaomi Official Store",
+      "rating": "4.9",
+      "picture": "https://www.jakartanotebook.com/images/products/7/252/11290/3/xiaomi-yi-action-camera-white-49.jpg",
+      "id": 23
+    },
+    {
+      "name": "30A Brushless Motor Speed Controller RC BEC ESC T-Rex 450 V2 Helicopter Boat F5",
+      "description": "Brushless Motor Speed Controller 30A berguna sebagai pengontrol kecepatan pada helicopter remote control maupun kapal remote control.",
+      "price": "60800",
+      "seller": "MAJU JAYA",
+      "rating": "4.7",
+      "picture": "https://www.jakartanotebook.com/images/products/74/63/14506/1/brushless-motor-speed-controller-rc-bec-esc-t-rex-450-v2-30a-1.JPG",
+      "id": 24
+    },
+    {
+      "name": "Alat Pijat Elektrik Pundak Punggung Tangan Shiatsu Infrared Massager - 608 - Black",
+      "description": "Alat pijat ini diletak pada bagian pundak sehingga dapat memijat area punggung dan leher dengan sangat nyaman. Alat pijat ini dapat membuat tubuh Anda lebih relax dan santai. Berkat desain yang ergonomis membuat alat pijat ini dapat digunakan sambil duduk dan senderan.",
+      "price": "176100",
+      "seller": "Life Elektronik",
+      "rating": "4.1",
+      "picture": "https://www.jakartanotebook.com/images/products/86/879/36318/2/alat-pijat-elektrik-pundak-punggung-tangan-shiatsu-infrared-massager-black-1.jpg",
+      "id": 25
+    },
+    {
+      "name": "TrustFire Baterai AA Rechargeable Ni-Mh 2700mAh 1.2V 4 PCS - Blue",
+      "description": "Baterai AA keluaran TrustFire yang dapat diisi ulang sehingga pemakaiannya bisa awet dan tahan lama. Dengan cell baterai dari manufaktur Jepang, baterai ini dapat dipakai ulang hingga 1.500 kali. ",
+      "price": "79800",
+      "seller": "Ronny RC",
+      "rating": "4.2",
+      "picture": "https://www.jakartanotebook.com/images/products/13/306/9332/6/trustfire-baterai-aa-rechargeable-ni-mh-2700mah-1.2v-4-pcs-blue-6.JPG",
+      "id": 26
+    },
+    {
+      "name": "Adapter Lightning ke 3.5mm Headphone for iPhone 7/8/X - Black",
+      "description": "Adapter ini berfungsi untuk mengubah port lightning ke port audio 3.5mm. Sangat berguna untuk iPhone 7, iPhone 8 dan iPhone X karena iPhone ini tidak memiliki port audio 3.5mm sehingga dengan menggunakan adapter ini, Anda dapat menggunakan earphone / headphone favorit Anda di iPhone 7/8/X.",
+      "price": "22200",
+      "seller": "Gudang Aksesoris",
+      "rating": "4.5",
+      "picture": "https://www.jakartanotebook.com/images/products/33/63/22111/2/lightning-to-35mm-headphone-adapter-for-iphone-7-black-1.jpg",
+      "id": 27
+    },
+    {
+      "name": "Elgato EyeTV Hybrid DVB-T2 TV Tuner for Mac / PC - Silver",
+      "description": "Elgato EyeTV Hybrid TV Tuner for Mac or PC merupakan TV Tuner bagi laptop, mac atau PC Anda dengan dukungan DVB-T, DVB-C, DVB-T2. Dengan alat ini Anda dapat melihat siaran televisi dengan banyak channel yang tersedia, cukup hubungkan dengan kabel coaxial atau koneksikan ke antena aerial untuk menyaksikan berbagai program TV.",
+      "price": "499900",
+      "seller": "Batam EC",
+      "rating": "4.8",
+      "picture": "https://www.jakartanotebook.com/images/products/29/256/19924/15/elgato-dvb-t2-eyetv-hybrid-tv-tuner-for-mac-or-pc-silver-105.jpg",
+      "id": 28
+    },
+    {
+      "name": "0.3mm Ultra Thin Silicone Materials Case Protection Shell for iPhone 6/6s - Transparent",
+      "description": "0.3mm Ultra Thin Silicone Materials Case Protection Shell akan melindungi iPhone kesayangan Anda dari berbagai hal yang tidak Anda inginkan seperti terkena goresan atau kotoran yang dapat merusak penampilan iPhone Anda.",
+      "price": "5900",
+      "seller": "Bersama ACC",
+      "rating": "4.0",
+      "picture": "https://www.jakartanotebook.com/images/products/33/63/14329/34/03mm-ultra-thin-silicone-materials-case-protection-shell-for-iphone-6-transparent-1.jpg",
+      "id": 29
+    },
+    {
+      "name": "Apple Kabel USB Type C to USB Type C 2 Meter for Magsafe 61W/87W Original - White",
+      "description": "Kabel Apple Original dengan koneksi USB Type C ke USB Type C ini khusus digunakan sebagai adapter charger Magsafe 61W maupun 87W.untuk perangkat Macbook Anda.",
+      "price": "195600",
+      "seller": "Blitzwolf",
+      "rating": "4.9",
+      "picture": "https://www.jakartanotebook.com/images/products/39/9/31181/3/apple-kabel-usb-type-c-to-usb-type-c-for-magsafe-61w-or-87w-original-white-1.jpg",
+      "id": 30
+    },
+    {
+      "name": "Tronsmart Element Force Bluetooth Speaker IPX7 Waterproof 40W - Black   Print",
+      "description": "Tronsmart Speaker Bluetooth dibalut dengan element force+ membuat produk ini tangguh untuk dibawa kemanapun dibutuhkan. Speaker ini memiliki kualitas suara yang jernih karena memiliki 3 pengaturan equalizer dalam satu produk. Didukung dengan teknologi NFC yang membuatnya mudah terkoneksi dengan sumber suara dalam satu sentuhan.",
+      "price": "587900",
+      "seller": "Nada Audio",
+      "rating": "4.2",
+      "picture": "https://www.jakartanotebook.com/images/products/42/505/40180/2/tronsmart-element-force-bluetooth-speaker-ipx7-waterproof-40w-black-81.jpg",
+      "id": 31
+    },
+    {
+      "name": "TP-LINK 5-Port Gigabit Desktop Switch - TL-SG105 - Black",
+      "description": "TP-LINK 5-Port 10/100/1000Mbps Desktop Switch menyediakan cara termudah untuk membuat transisi ke Gigabit Ethernet. Meningkatkan kecepatan koneksi server jaringan dan server pusat Anda, atau membuat Gigabit ke desktop kenyataan. Selain itu, TL-SG105 mengadopsi desain konsumsi daya yang rendah. Dengan teknologi hemat energi yang inovatif, TL-SG105 dapat menghemat hingga 84% dari konsumsi daya, sehingga menjadikan solusi ramah lingkungan untuk jaringan rumah atau kantor Anda.",
+      "price": "249700",
+      "seller": "Pusat Router",
+      "rating": "4.5",
+      "picture": "https://www.jakartanotebook.com/images/products/32/267/24418/2/tp-link-5-port-gigabit-desktop-switch-tl-sg105-black-1.jpg",
+      "id": 32
     }
   ]
 }

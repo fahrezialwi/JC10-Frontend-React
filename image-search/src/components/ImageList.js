@@ -10,23 +10,29 @@ class ImageList extends Component {
         
         let hasil = this.props.data.map((item, index) => {
             return (
-                <a 
-                    href={item.urls.full} 
-                    key={index} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                <div 
+                    className="col-4" 
+                    key={index}
                 >
-                    <img 
-                        className="mt-3 col-md-4"
-                        src={item.urls.regular} 
-                        alt={item.description}
-                        style={{
-                            objectFit: "cover",
-                            objectPosition: "100% 0",
-                            height: "350px",
-                        }}
-                    />
-                </a>
+                    <a 
+                        href={item.urls.full} 
+                        key={index} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
+                        <img 
+                            src={item.urls.regular} 
+                            alt={item.description}
+                            style={{
+                                objectFit: "cover",
+                                objectPosition: "50% 0",
+                                height: "350px",
+                                width: "350px",
+                                marginBottom: "30px"
+                            }}
+                        />
+                    </a>
+                </div>
             ) 
         })
 
@@ -35,7 +41,7 @@ class ImageList extends Component {
     
     render() {
         return (
-            <div>
+            <div className="row">
                 {this.renderList()}
             </div>
         )

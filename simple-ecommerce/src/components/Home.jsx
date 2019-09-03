@@ -1,10 +1,5 @@
-import React, { Component } from 'react';
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators
-} from 'reactstrap'
+import React, { Component } from 'react'
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap'
 
 const items = [
   {

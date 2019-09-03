@@ -10,19 +10,41 @@ class SearchResults extends Component {
         super(props)
         this.state = {
             products: [],
-            processedProducts: []
+            processedProducts: [],
+            minValue: '',
+            maxValue: ''
+
         }
     }
     
     componentDidMount() {
+        this._isMounted = true
         axios.get(
             'http://localhost:2019/products'
         ).then((res) => {
-            this.setState({
-                products: res.data,
-                processedProducts: res.data
-            })
+            if (this._isMounted) {
+                this.setState({
+                    products: res.data,
+                    processedProducts: res.data
+                })
+            }
         })
+    }
+
+    _isMounted = false
+
+    componentWillUnmount() {
+        this._isMounted = false
+    }    
+
+    onFilterMin = (e) => {
+        const number = (e.target.validity.valid) ? e.target.value : this.state.minValue;
+        this.setState({minValue: number})
+    }
+
+    onFilterMax = (e) => {
+        const number = (e.target.validity.valid) ? e.target.value : this.state.maxValue;
+        this.setState({maxValue: number})
     }
 
     // Filter
@@ -105,8 +127,8 @@ class SearchResults extends Component {
                                 </div>
                                 <form onBlur={this.onFilterSubmit}>
                                     <h6>Price</h6>
-                                    <input ref={(input) => {this.minimum = input}} className="form-control mb-2" type="number" placeholder="Minimum"/>
-                                    <input ref={(input) => {this.maximum = input}} className="form-control mb-2" type="number" placeholder="Maximum"/>
+                                    <input ref={(input) => {this.minimum = input}} className="form-control mb-2" placeholder="Minimum" pattern="[0-9]*" onChange={this.onFilterMin} value={this.state.minValue} />
+                                    <input ref={(input) => {this.maximum = input}} className="form-control mb-2" placeholder="Maximum" pattern="[0-9]*" onChange={this.onFilterMax} value={this.state.maxValue} />
                                 </form>
                             </div>
                         </div>

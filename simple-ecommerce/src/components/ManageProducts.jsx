@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 class ManageProducts extends Component {
 
@@ -54,6 +55,8 @@ class ManageProducts extends Component {
         let name = this.name.value
         let description = this.desc.value
         let price = this.price.value
+        let seller = this.seller.value
+        let rating = this.rating.value
         let picture = this.pict.value
 
         // POST data ke database (JSON)
@@ -63,10 +66,17 @@ class ManageProducts extends Component {
                 name: name,
                 description: description,
                 price: price,
+                seller: seller,
+                rating: rating,
                 picture: picture
             }
         ).then((res) => {
             this.getData()
+            Swal.fire({
+                type: 'success',
+                text: 'Product has been successfully added',
+                confirmButtonColor: '#28a745'
+            })
         }).catch((err) => {
             console.log(err)
         })
@@ -87,16 +97,34 @@ class ManageProducts extends Component {
 
     // Delete data   
     onDeleteClick = (id) => {
+        Swal.fire({
+            text: "Delete this product?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            customClass: {
+                confirmButton: 'btn btn-success mr-3 pl-4 pr-4',
+                cancelButton: 'btn btn-outline-success pl-4 pr-4'
+              },
+            buttonsStyling: false
+          }).then((result) => {
+            if (result.value) {
+                // Delete data di database (JSON)
+                axios.delete(
+                    `http://localhost:2019/products/${id}`
 
-        // Delete data di database (JSON)
-        axios.delete(
-            `http://localhost:2019/products/${id}`
-
-        ).then((res) => {
-            this.getData()
-        }).catch((err) => {
-            console.log(err)
-        })
+                ).then((res) => {
+                    this.getData()
+                }).catch((err) => {
+                    console.log(err)
+                })
+                Swal.fire({
+                    type: 'success',
+                    text: 'Delete successful',
+                    confirmButtonColor: '#28a745'
+                })
+            }
+          })
     }
     
     // Save edit data
@@ -123,6 +151,11 @@ class ManageProducts extends Component {
             }
         ).then((res) => {
             this.getData()
+            Swal.fire({
+                type: 'success',
+                text: 'Edit successful',
+                confirmButtonColor: '#28a745'
+            })
         }).catch((err) => {
             console.log(err)
         })

@@ -21,7 +21,7 @@ class SearchBar extends Component {
             <div>
                 <h3 className="text-center mt-3">Unsplash Image Search</h3>
                 <form 
-                    className="form-group mt-3" 
+                    className="form-group mt-3 mb-5" 
                     onSubmit={this.onSubmitForm}> 
                     <input 
                         type="text" 
