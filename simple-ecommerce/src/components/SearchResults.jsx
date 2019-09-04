@@ -48,7 +48,7 @@ class SearchResults extends Component {
     }
 
     // Filter
-    onFilterSubmit = (e) => {
+    onFilterBlur = (e) => {
         e.preventDefault()
         this.setState({processedProducts: this.setState.products})
 
@@ -125,7 +125,7 @@ class SearchResults extends Component {
                                 <div className="border-bottom card-title mb-3">
                                     <h5>Filter Product</h5>
                                 </div>
-                                <form onBlur={this.onFilterSubmit}>
+                                <form onBlur={this.onFilterBlur}>
                                     <h6>Price</h6>
                                     <input ref={(input) => {this.minimum = input}} className="form-control mb-2" placeholder="Minimum" pattern="[0-9]*" onChange={this.onFilterMin} value={this.state.minValue} />
                                     <input ref={(input) => {this.maximum = input}} className="form-control mb-2" placeholder="Maximum" pattern="[0-9]*" onChange={this.onFilterMax} value={this.state.maxValue} />

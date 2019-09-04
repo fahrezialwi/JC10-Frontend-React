@@ -5,7 +5,8 @@ import { onLoginUser } from '../actions'
 
 class Login extends Component {
     
-    onLoginSubmit = () => {
+    onLoginSubmit = (e) => {
+        e.preventDefault()
         this.props.onLoginUser(this.username.value,this.password.value)
     }
 
