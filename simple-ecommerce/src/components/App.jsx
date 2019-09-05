@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, BrowserRouter } from 'react-router-dom'
 import { connect } from  'react-redux'
-import { keepLogin } from '../actions'
+import { keepLogin, keepCart } from '../actions'
 
 import Header from './Header'
 import Home from './Home'
@@ -9,6 +9,8 @@ import ManageProducts from './ManageProducts'
 import Register from './Register'
 import Login from './Login'
 import ProductDetail from './ProductDetail'
+import Cart from './Cart'
+import Checkout from './Checkout'
 import '../style.css'
 import SearchResults from './SearchResults';
 
@@ -24,11 +26,18 @@ class App extends Component {
     componentDidMount() {
         // Check local storage
         let userStorage = JSON.parse(localStorage.getItem('userData'))
+        let cartStorage = JSON.parse(localStorage.getItem('cart'))
 
         if(userStorage){
             // kirim ke redux
             this.props.keepLogin(userStorage)
         }
+
+        if(cartStorage){
+            // kirim ke redux
+            this.props.keepCart(cartStorage)
+        }
+
 
         this.setState({check: true})
     }
@@ -42,6 +51,8 @@ class App extends Component {
                     <Route path='/register' component={Register} />
                     <Route path='/login' component={Login} />
                     <Route path='/searchresults' component={SearchResults} />
+                    <Route path='/cart' component={Cart} />
+                    <Route path='/checkout' component={Checkout} />        
                     <Route path='/manageproducts' component={ManageProducts} />
                     <Route path='/productdetail/:id' component={ProductDetail}/>
                 </BrowserRouter>
@@ -52,4 +63,4 @@ class App extends Component {
     }
 }
 
-export default connect(null,{keepLogin})(App) 
+export default connect(null,{keepLogin, keepCart})(App) 

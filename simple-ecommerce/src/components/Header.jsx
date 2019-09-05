@@ -38,7 +38,22 @@ class Header extends Component {
       }
     }
 
+    totalShoppingQty = () => {
+      let qty = 0
+      let array = this.props.cartArray
+      for (let i = 0; i< array.length; i++){
+          qty += array[i].qtyProduct
+      }
+      return qty
+    }
+
+    // componentDidMount(){
+    //   this.forceUpdate()
+    // }
+
+
     render() {
+      console.log("render")
       if(!this.props.username){
         return (
           <div>
@@ -80,12 +95,13 @@ class Header extends Component {
                       <button className="btn btn-success" type="button" id="search-button" onClick={this.onSearchSubmit}>Search</button>
                     </div>
                 </form>
+                <div className="ml-auto">
+                  <Link className="fa fa-shopping-cart ml-4 mr-4 " aria-hidden="true" to="/cart">({this.totalShoppingQty()})</Link>
+                  <Link className="fa fa-archive mr-4 " aria-hidden="true" to="/manageproducts"></Link>
+                </div>
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
-                    <NavItem>
-                      <NavLink className="nav-link" to="/manageproducts">Manage Products</NavLink>
-                    </NavItem>
                     <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret className="navbar-dropdown">
                       <div className="login-break d-inline-block">
@@ -118,7 +134,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     username: state.auth.username,
-    email: state.auth.email
+    email: state.auth.email,
+    cartArray: state.cart
   }
 }
 

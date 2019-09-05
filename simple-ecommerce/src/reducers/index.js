@@ -30,10 +30,20 @@ const searchReducer = (state = initSearch, action) => {
     }
 }
 
+const cartReducer = (state = [], action) => {
+    switch(action.type) {
+        case "CART_UPDATED":
+            return action.payload.cart
+        default:
+            return state
+    }
+}
+
 const reducers = combineReducers(
     {
         auth: authReducer,
-        search: searchReducer 
+        search: searchReducer,
+        cart: cartReducer
     }
 )
 

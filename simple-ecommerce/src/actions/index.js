@@ -45,16 +45,6 @@ export const onLoginUser = (username, password) => {
     }
 }
 
-// Action Creator Logout
-export const onLogoutUser = () => {
-
-    localStorage.removeItem('userData')
-    // Action
-    return {
-        type: 'LOGOUT_SUCCESS',
-    }
-}
-
 // Action Creator
 export const keepLogin = (objUser) => {
 
@@ -69,6 +59,16 @@ export const keepLogin = (objUser) => {
     }
 }
 
+// Action Creator Logout
+export const onLogoutUser = () => {
+
+    localStorage.removeItem('userData')
+    // Action
+    return {
+        type: 'LOGOUT_SUCCESS',
+    }
+}
+
 // Action Creator
 export const searchKeyword = (keyword) => {
 
@@ -80,6 +80,28 @@ export const searchKeyword = (keyword) => {
         }
     }
 }
+
+export const addToCart = (cart) => {
+
+    return {
+        type: 'CART_UPDATED',
+        payload: {
+            cart
+        }
+    }
+}
+
+export const keepCart = (cart) => {
+
+    return {
+        type: 'CART_UPDATED',
+        payload: {
+            cart
+        }
+    }
+}
+
+
 
 // export dengan default
 // ketika diimport di file lain tidak boleh menggunakan kurung kurawal

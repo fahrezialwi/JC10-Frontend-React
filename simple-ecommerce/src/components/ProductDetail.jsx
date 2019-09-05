@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { addToCart } from '../actions'
 
 class ProductDetail extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            product: null
+            product: []
         }
     }
 
@@ -18,6 +20,42 @@ class ProductDetail extends Component {
                 product: res.data
             })     
         })
+    }
+
+    onAddToCartClick = (id, qty) => {
+        let cart = this.props.arrayCart
+
+        let quantity = parseInt(qty.value)
+
+        let flag = 0
+
+        if (cart.length !== 0){
+            for (let i=0 ; i<cart.length ; i++){
+                if(id === cart[i].idProduct){
+                    cart[i].qtyProduct += quantity
+                    flag = 1
+                } 
+            }
+        }
+        
+        if (flag===0){
+            cart.push({
+                idProduct: id,
+                qtyProduct: quantity
+            })
+            
+        }
+        console.log(cart)
+        this.props.addToCart(cart)
+
+         
+        localStorage.setItem(
+            'cart',
+            JSON.stringify(this.props.arrayCart)
+        )
+
+        alert("Product has been added to cart")
+       
     }
 
     render() {
@@ -38,10 +76,10 @@ class ProductDetail extends Component {
                             <p className="mt-5 mb-4">{this.state.product.description}</p>
                             <div className="row">
                                 <div className="col-2 qty-input">
-                                    <input className="form-control" type="number" placeholder="Jumlah"/>
+                                    <input ref={(input) => {this.quantity = input}} className="form-control" type="number" min="1" placeholder="Jumlah"/>
                                 </div>
                                 <div className="col-3">
-                                    <button className="btn btn-orange">Add To Cart</button>
+                                    <button className="btn btn-orange" onClick={()=> {this.onAddToCartClick(this.state.product.id, this.quantity)}}>Add To Cart</button>
                                 </div>
                             </div>
                         </div>  
@@ -58,4 +96,10 @@ class ProductDetail extends Component {
     }
 }
 
-export default ProductDetail
+const mapStateToProps = (state) => {
+    return {
+        arrayCart: state.cart
+    }
+}
+
+export default connect(mapStateToProps,{addToCart})(ProductDetail)
