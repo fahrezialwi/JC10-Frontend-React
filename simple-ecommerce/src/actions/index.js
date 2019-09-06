@@ -81,28 +81,6 @@ export const searchKeyword = (keyword) => {
     }
 }
 
-export const addToCart = (cart) => {
-
-    return {
-        type: 'CART_UPDATED',
-        payload: {
-            cart
-        }
-    }
-}
-
-export const keepCart = (cart) => {
-
-    return {
-        type: 'CART_UPDATED',
-        payload: {
-            cart
-        }
-    }
-}
-
-
-
 // export dengan default
 // ketika diimport di file lain tidak boleh menggunakan kurung kurawal
 

@@ -1,124 +1,67 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+
 
 class Checkout extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            products: []
-        }
-    }
-
-
-    componentDidMount() {
-         this.getData()
-    }
-
-    getData = () => {
-
-        localStorage.removeItem('cart')
-        localStorage.setItem(
-            'cart',
-            JSON.stringify(this.state.products)
-        )
-   
-        if(this.props.arrayCart.length !== 0){
-            let arrayId = this.props.arrayCart.map((val) => {
-                return val.idProduct
-            })
-            
-            axios.get(
-                'http://localhost:2019/products', 
-                {
-                    params: {
-                        id: arrayId
-                    }
-                }
-
-            ).then((res) => {
-
-                let array = []
-                for(let i = 0; i< res.data.length; i++){
-                    array.push({
-                        ...res.data[i],
-                        ...(this.props.arrayCart.find(elem => elem.idProduct === res.data[i].id))
-                    })
-                }
-
-                this.setState({products: array})
-
-            }).catch((err)=>{
-                console.log(err)
-            })
-        }
-    }
-
-    cartList = () => {
-        return this.state.products.map((product)=>{
+    checkoutBody = () => {
+        return this.props.carts.map((cart) => {
             return (
-                <tr key={product.id}>
-                    <td><img src={product.picture} alt={product.name} width="100"/></td>
-                    <td>{product.name}</td>
-                    <td>{product.price}</td>
-                    <td>{product.qtyProduct}</td>
+                <tr key={cart.id}>
+                    <td>{cart.product_id}</td>
+                    <td>{cart.name}</td>   
+                    <td>{this.formatCurrency(cart.price)}</td>
+                    <td>{cart.qty}</td>
+                    <td>{this.formatCurrency(cart.qty * cart.price)}</td>
                 </tr>
             )
         })
-        
     }
 
-    totalShopping = () => {
+    checkoutTotal = () => {
         let total = 0
-        let array = this.state.products
-        for (let i = 0; i< array.length; i++){
-            total += array[i].price * array[i].qtyProduct
-        }
-        return total
+        this.props.carts.forEach((cart) => {
+            total += (cart.qty * cart.price)
+        })
+        return (
+            <tr>
+                <th colSpan='4'>TOTAL</th>
+                <td>{this.formatCurrency(total)}</td>
+            </tr>
+        )
+    }
+
+    formatCurrency(number) {
+        return number.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 })
     }
 
     render() {
-        if (this.props.username){
+
+        // bukan null
+        if (this.props.carts){
         return (
             <div className="container container-top">
-            <h1 className="text-center mt-4 mb-4">Checkout</h1>
+            <h1>TOTAL</h1>
                 <table className="table text-center">
                     <thead>
                         <tr>
-                            <th>PICTURE</th>
+                            <th>ID</th>
                             <th>NAME</th>
                             <th>PRICE</th>
                             <th>QTY</th>
-                    
+                            <th>TOTAL</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.cartList()}  
-                        <tr>
-                            <th>TOTAL BELANJA</th>
-                            <th></th>
-                            <th></th>
-                        
-                            <th>Rp {this.totalShopping()}</th>
-                        </tr>
-               
+                        {this.checkoutBody()} 
+                        {this.checkoutTotal()}
                     </tbody>
                 </table>
             </div>
         )
         } else {
-            return <Redirect to='/login'/>
+            return null
         }
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        arrayCart: state.cart,
-        username: state.auth.username
-    }
-}
-
-export default connect(mapStateToProps)(Checkout)
+export default Checkout

@@ -133,7 +133,7 @@ class ManageProducts extends Component {
         let id = this.state.selectedId
         let name = this.state.selectedName
         let description = this.state.selectedDescription
-        let price = this.state.selectedPrice
+        let price = parseInt(this.state.selectedPrice)
         let seller = this.state.selectedSeller
         let rating = this.state.selectedRating
         let picture = this.state.selectedPicture

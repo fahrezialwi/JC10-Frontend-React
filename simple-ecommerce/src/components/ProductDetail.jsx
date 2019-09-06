@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { addToCart } from '../actions'
 
 class ProductDetail extends Component {
 
@@ -22,40 +21,54 @@ class ProductDetail extends Component {
         })
     }
 
-    onAddToCartClick = (id, qty) => {
-        let cart = this.props.arrayCart
+    onAddToCartClick = () => {
 
-        let quantity = parseInt(qty.value)
+        let idUser = this.props.id
+        let name = this.state.product.name
+        let description = this.state.product.description
+        let price = this.state.product.price
+        let picture = this.state.product.picture
+        let idProduct =  this.state.product.id
+        let quantity = parseInt(this.quantity.value)
 
-        let flag = 0
-
-        if (cart.length !== 0){
-            for (let i=0 ; i<cart.length ; i++){
-                if(id === cart[i].idProduct){
-                    cart[i].qtyProduct += quantity
-                    flag = 1
-                } 
+        axios.get(
+            'http://localhost:2019/carts',
+            {
+                params: {
+                    user_id: this.props.id,
+                    product_id: this.state.product.id
+                }
             }
-        }
         
-        if (flag===0){
-            cart.push({
-                idProduct: id,
-                qtyProduct: quantity
-            })
-            
-        }
-        console.log(cart)
-        this.props.addToCart(cart)
+        ).then((res) => {
 
-         
-        localStorage.setItem(
-            'cart',
-            JSON.stringify(this.props.arrayCart)
-        )
+            if (res.data.length === 0){
+                axios.post(
+                    'http://localhost:2019/carts', 
+                    {
+                        user_id: idUser,
+                        product_id: idProduct,
+                        name: name,
+                        description: description,
+                        price: price,
+                        picture: picture,
+                        qty: quantity
+                    }
+                )
+            } else {
+                // res.data[0] = {id, user_id, product_id, ... , qty}
+                let newQty = res.data[0].qty + quantity
 
+                axios.patch(
+                    `http://localhost:2019/carts/${res.data[0].id}`, 
+                    {
+                        qty: newQty
+                    }
+                )
+            }
+        })
+        
         alert("Product has been added to cart")
-       
     }
 
     render() {
@@ -79,7 +92,7 @@ class ProductDetail extends Component {
                                     <input ref={(input) => {this.quantity = input}} className="form-control" type="number" min="1" placeholder="Jumlah"/>
                                 </div>
                                 <div className="col-3">
-                                    <button className="btn btn-orange" onClick={()=> {this.onAddToCartClick(this.state.product.id, this.quantity)}}>Add To Cart</button>
+                                    <button className="btn btn-orange" onClick={()=> {this.onAddToCartClick()}}>Add To Cart</button>
                                 </div>
                             </div>
                         </div>  
@@ -98,8 +111,8 @@ class ProductDetail extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        arrayCart: state.cart
+        id: state.auth.id
     }
 }
 
-export default connect(mapStateToProps,{addToCart})(ProductDetail)
+export default connect(mapStateToProps)(ProductDetail)

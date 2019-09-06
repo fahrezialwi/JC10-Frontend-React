@@ -38,20 +38,6 @@ class Header extends Component {
       }
     }
 
-    totalShoppingQty = () => {
-      let qty = 0
-      let array = this.props.cartArray
-      for (let i = 0; i< array.length; i++){
-          qty += array[i].qtyProduct
-      }
-      return qty
-    }
-
-    // componentDidMount(){
-    //   this.forceUpdate()
-    // }
-
-
     render() {
       console.log("render")
       if(!this.props.username){
@@ -96,7 +82,7 @@ class Header extends Component {
                     </div>
                 </form>
                 <div className="ml-auto">
-                  <Link className="fa fa-shopping-cart ml-4 mr-4 " aria-hidden="true" to="/cart">({this.totalShoppingQty()})</Link>
+                  <Link className="fa fa-shopping-cart ml-4 mr-4 " aria-hidden="true" to="/cart"></Link>
                   <Link className="fa fa-archive mr-4 " aria-hidden="true" to="/manageproducts"></Link>
                 </div>
                 <NavbarToggler onClick={this.toggle}/>

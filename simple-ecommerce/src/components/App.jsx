@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, BrowserRouter } from 'react-router-dom'
 import { connect } from  'react-redux'
-import { keepLogin, keepCart } from '../actions'
+import { keepLogin } from '../actions'
 
 import Header from './Header'
 import Home from './Home'
@@ -26,18 +26,11 @@ class App extends Component {
     componentDidMount() {
         // Check local storage
         let userStorage = JSON.parse(localStorage.getItem('userData'))
-        let cartStorage = JSON.parse(localStorage.getItem('cart'))
 
         if(userStorage){
             // kirim ke redux
             this.props.keepLogin(userStorage)
         }
-
-        if(cartStorage){
-            // kirim ke redux
-            this.props.keepCart(cartStorage)
-        }
-
 
         this.setState({check: true})
     }
@@ -63,4 +56,4 @@ class App extends Component {
     }
 }
 
-export default connect(null,{keepLogin, keepCart})(App) 
+export default connect(null,{keepLogin})(App) 
