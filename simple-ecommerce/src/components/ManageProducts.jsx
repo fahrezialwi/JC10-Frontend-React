@@ -166,6 +166,10 @@ class ManageProducts extends Component {
         this.setState({selectedId: 0})
     }
 
+    formatCurrency = (number) => {
+        return number.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 })
+    }
+
     // Render Product List
     productList = () => {
 
@@ -183,7 +187,7 @@ class ManageProducts extends Component {
                     <tr key={product.id}>
                         <td>{product.name}</td>
                         <td>{product.description}</td>
-                        <td>{product.price}</td>
+                        <td>{this.formatCurrency(product.price)}</td>
                         <td>{product.seller}</td>
                         <td>{product.rating}</td>
                         <td>

@@ -1,56 +1,16 @@
 {
   "users": [
     {
-      "id": 1,
-      "username": "alvin",
-      "email": "alvin@gmail.com",
-      "password": "satuduatiga",
-      "cart": [
-        {
-          "user_id": 1,
-          "product_id": 1,
-          "name": "Fantech Gaming Mouse Wireless 2000 DPI - W4 - Black",
-          "description": "Dengan harganya yang begitu terjangkau, Anda bukan hanya mendapatkan mouse yang dikhususkan untuk gaming saja, namun juga fitur menarik seperti wireless dan dpi yang cukup tinggi.",
-          "price": 30600,
-          "picture": "https://www.jakartanotebook.com/images/products/40/63/22490/2/fantech-gaming-mouse-wireless-2000-dpi-black-94.jpg",
-          "qty": 4,
-          "id": 1
-        },
-        {
-          "user_id": 1,
-          "product_id": 2,
-          "name": "Gaming Mouse Pad XL Desk Mat 30 x 80cm - Model B1",
-          "description": "Gaming Mouse Pad ini dibuat dari material kain yang berkualitas dan pada setiap sudut mouse pad terdapat jahitan tambahan sehingga ketahaan mouse pad ini sangat tangguh. Memiliki anti slip back yang berfungsi agar mousepad tidak mudah bergerak saat Anda menggunakan mouse. Gambar Model Overwatch.",
-          "price": 39500,
-          "picture": "https://www.jakartanotebook.com/images/products/30/63/24632/1/gaming-mouse-pad-30-x-80cm-model-b1-2.jpg",
-          "qty": 6,
-          "id": 2
-        }
-      ]
-    },
-    {
       "username": "admin",
-      "email": "admin@fahrezialwi.com",
-      "password": "123456",
-      "id": 2
-    },
-    {
-      "username": "moderator",
-      "email": "mod@gmail.com",
-      "password": "123456",
-      "id": 3
-    },
-    {
-      "username": "administrator",
       "email": "admin@gmail.com",
       "password": "123456",
-      "id": 4
+      "id": 1
     },
     {
       "username": "fahrezialwi",
       "email": "fahrezialwi@gmail.com",
       "password": "123456",
-      "id": 5
+      "id": 2
     }
   ],
   "products": [
@@ -361,7 +321,7 @@
       "description": "Gaming Mouse Pad ini dibuat dari material kain yang berkualitas dan pada setiap sudut mouse pad terdapat jahitan tambahan sehingga ketahaan mouse pad ini sangat tangguh. Memiliki anti slip back yang berfungsi agar mousepad tidak mudah bergerak saat Anda menggunakan mouse. Gambar Model Overwatch.",
       "price": 39500,
       "picture": "https://www.jakartanotebook.com/images/products/30/63/24632/1/gaming-mouse-pad-30-x-80cm-model-b1-2.jpg",
-      "qty": 2,
+      "qty": 6,
       "id": 2
     }
   ]

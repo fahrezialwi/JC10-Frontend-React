@@ -7,18 +7,33 @@ class ProductDetail extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            product: []
+            product: [],
+            productPrice: 0
         }
     }
 
     componentDidMount() {
+       
         axios.get(
             `http://localhost:2019/products/${this.props.match.params.id}`
         ).then((res) => {      
             this.setState({
                 product: res.data
             })     
+
+            let price = this.formatCurrency(this.state.product.price)
+            this.setState({
+                productPrice: price
+            })  
         })
+    }
+
+    formatCurrency = (number) => {
+        return number.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 })
+    }
+
+    productPrice = () => {
+        return this.formatCurrency(this.state.product.price)
     }
 
     onAddToCartClick = () => {
@@ -85,7 +100,7 @@ class ProductDetail extends Component {
                         <div className="col-7 product-data">
                         <h2>{this.state.product.name}</h2>
                             <p><img src="../star-5.png" alt="rating" className="mr-2"/>{this.state.product.rating}</p>
-                            <h3 className="text-orange">Rp. {this.state.product.price}</h3>
+                            <h3 className="text-orange">{this.state.productPrice}</h3>
                             <p className="mt-5 mb-4">{this.state.product.description}</p>
                             <div className="row">
                                 <div className="col-2 qty-input">

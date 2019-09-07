@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
-import Checkout from './Checkout'
 
 class Cart extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            carts: [],
-            checkout: null
+            carts: []
         }
     }
 
@@ -33,12 +31,6 @@ class Cart extends Component {
         })
     }
 
-    onCheckoutClick = () => {
-        this.setState({
-            checkout: this.state.carts
-        })
-    }
-
     onDeleteProduct = (index, cartId) => {
          
         if (window.confirm("Are you sure?")){
@@ -54,12 +46,11 @@ class Cart extends Component {
         }
     }
 
-    formatCurrency(number) {
+    formatCurrency = (number) => {
         return number.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 })
     }
 
     cartList = () => {
-        console.log(this.state.carts)
         return this.state.carts.map((cart, index)=>{
             return (
                 <tr key={cart.id}>
@@ -96,11 +87,11 @@ class Cart extends Component {
                             {this.cartList()}  
                         </tbody>
                     </table>
-                    <div className ="text-center">
-                        <button type="button" className="btn btn-success" onClick = {this.onCheckoutClick}>Checkout</button>
+                    <div className="text-center">
+                        <Link to='/checkout'>
+                            <button type="button" className="btn btn-success">Checkout</button>
+                        </Link>
                     </div>
-
-                    <Checkout carts={this.state.checkout}/>
                 </div>
             )
         } else {

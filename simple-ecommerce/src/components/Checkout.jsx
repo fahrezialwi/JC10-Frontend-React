@@ -1,10 +1,36 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 
 class Checkout extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            carts: []
+        }
+    }
+
+    componentDidMount() {
+        this.getCartData()
+    }
+
+    getCartData = () => {
+        axios.get(
+            'http://localhost:2019/carts',
+            {
+                params: {
+                    user_id: this.props.id
+                }
+            }
+        ).then((res) => {
+            this.setState({carts: res.data}) 
+        })
+    }
+
     checkoutBody = () => {
-        return this.props.carts.map((cart) => {
+        return this.state.carts.map((cart) => {
             return (
                 <tr key={cart.id}>
                     <td>{cart.product_id}</td>
@@ -19,28 +45,26 @@ class Checkout extends Component {
 
     checkoutTotal = () => {
         let total = 0
-        this.props.carts.forEach((cart) => {
+        this.state.carts.forEach((cart) => {
             total += (cart.qty * cart.price)
         })
         return (
             <tr>
                 <th colSpan='4'>TOTAL</th>
-                <td>{this.formatCurrency(total)}</td>
+                <th>{this.formatCurrency(total)}</th>
             </tr>
         )
     }
 
-    formatCurrency(number) {
+    formatCurrency = (number) => {
         return number.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 })
     }
 
     render() {
-
-        // bukan null
-        if (this.props.carts){
+        if (this.props.username){
         return (
             <div className="container container-top">
-            <h1>TOTAL</h1>
+            <h1>Checkout</h1>
                 <table className="table text-center">
                     <thead>
                         <tr>
@@ -59,9 +83,16 @@ class Checkout extends Component {
             </div>
         )
         } else {
-            return null
+            return <Redirect to='/login'/>
         }
     }
 }
 
-export default Checkout
+const mapStateToProps = (state) => {
+    return {
+        username: state.auth.username,
+        id: state.auth.id
+    }
+}
+
+export default connect(mapStateToProps)(Checkout)

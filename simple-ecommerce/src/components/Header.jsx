@@ -39,7 +39,6 @@ class Header extends Component {
     }
 
     render() {
-      console.log("render")
       if(!this.props.username){
         return (
           <div>
